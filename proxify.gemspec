@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = Proxify::VERSION
   gem.authors       = ["Robbie Clutton"]
   gem.email         = ["robert.clutton@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{Create a proxy for any object.}
+  gem.summary       = %q{Create a proxy for any object.}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)
