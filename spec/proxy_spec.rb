@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-class Proxied
+class Foo
   include Proxify::Me
 
   proxy :hello, :say, :tell
@@ -23,7 +23,7 @@ class Proxied
 
 end
 
-class AnotherProxied
+class Bar
   include Proxify::Me
 
   proxy :hello
@@ -33,16 +33,16 @@ class AnotherProxied
   end
 end
 
-describe Proxied do
+describe Foo do
 
   subject do
-    proxied = Proxied.new
-    proxied.proxify
+    foo = Foo.new
+    foo.proxify
   end
 
   describe "Class Type" do
     it "has the type of ProxiedProxy" do 
-      subject.is_a?(ProxiedProxy).should == true
+      subject.is_a?(FooProxy).should == true
     end
   end
 
@@ -67,7 +67,7 @@ describe Proxied do
 
   describe "a second proxied class" do
     it "can handle more than one" do
-      another = AnotherProxied.new.proxify
+      another = Bar.new.proxify
       subject.hello.should == another.hello
     end
   end
