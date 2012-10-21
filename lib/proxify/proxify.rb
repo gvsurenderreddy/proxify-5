@@ -1,6 +1,6 @@
-module Proxy
+module Proxify
 
-  class ProxyContainer
+  class Proxy
 
     attr_reader :subject, :proxies
 
@@ -10,7 +10,7 @@ module Proxy
     end
 
     def method_missing(method, *args, &block)
-      if @proxies.include?(method)
+      if proxies.include?(method)
         return subject.send(method, *args, &block)
       else
         raise NoMethodError, method.to_s
@@ -26,11 +26,11 @@ module Proxy
     end
   end
 
-  module Proxify
-    extend Proxy::ProxifyClass
+  module Me
+    extend Proxify::ProxifyClass
 
     def self.included(base)
-      base.send :extend, Proxy::ProxifyClass
+      base.send :extend, Proxify::ProxifyClass
     end
 
     def proxy
@@ -38,7 +38,7 @@ module Proxy
       klass = if k = class_exists?(class_name)
         k
       else
-        Object.const_set(class_name,ProxyContainer)
+        Object.const_set(class_name, Proxy)
       end
 
       klass.new(self, self.class.proxies)

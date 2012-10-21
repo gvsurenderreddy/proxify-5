@@ -15,5 +15,5 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = 'random'
 
-  require File.dirname(__FILE__) + '/../lib/proxy'
+  require File.dirname(__FILE__) + '/../lib/proxify'
 end

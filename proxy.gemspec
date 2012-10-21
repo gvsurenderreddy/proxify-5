@@ -5,7 +5,7 @@ require 'proxy/version'
 
 Gem::Specification.new do |gem|
   gem.name          = "proxy"
-  gem.version       = Proxy::VERSION
+  gem.version       = Proxify::VERSION
   gem.authors       = ["Robbie Clutton"]
   gem.email         = ["robert.clutton@gmail.com"]
   gem.description   = %q{TODO: Write a gem description}

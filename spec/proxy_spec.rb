@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 class Proxied
-  include Proxy::Proxify
+  include Proxify::Me
 
   proxy :hello, :say, :tell
 
@@ -24,7 +24,7 @@ class Proxied
 end
 
 class AnotherProxied
-  include Proxy::Proxify
+  include Proxify::Me
 
   proxy :hello
 
