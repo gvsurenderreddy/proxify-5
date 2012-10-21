@@ -23,6 +23,16 @@ class Proxied
 
 end
 
+class AnotherProxied
+  include Proxy::Proxify
+
+  accepts :hello
+
+  def hello
+    "world"
+  end
+end
+
 describe Proxied do
 
   subject do
@@ -55,5 +65,10 @@ describe Proxied do
     end
   end
 
-
+  describe "a second proxied class" do
+    it "can handle more than one" do
+      another = AnotherProxied.new.proxy
+      subject.hello.should == another.hello
+    end
+  end
 end
