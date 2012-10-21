@@ -7,7 +7,7 @@ Gem::Specification.new do |gem|
   gem.name          = "proxify"
   gem.version       = Proxify::VERSION
   gem.authors       = ["Robbie Clutton"]
-  gem.email         = ["robert.clutton@gmail.com"]
+  gem.email         = ["hello@iclutton.com"]
   gem.description   = %q{Create a proxy for any object.}
   gem.summary       = %q{Create a proxy for any object.}
   gem.homepage      = ""
