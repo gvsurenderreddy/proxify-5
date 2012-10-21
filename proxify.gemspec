@@ -1,10 +1,10 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'proxy/version'
+require 'proxify/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "proxy"
+  gem.name          = "proxify"
   gem.version       = Proxify::VERSION
   gem.authors       = ["Robbie Clutton"]
   gem.email         = ["robert.clutton@gmail.com"]
