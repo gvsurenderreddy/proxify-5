@@ -3,7 +3,7 @@ require 'spec_helper'
 class Proxied
   include Proxy::Proxify
 
-  accepts :hello, :say, :tell
+  proxy :hello, :say, :tell
 
   def hello
     "world"
@@ -26,7 +26,7 @@ end
 class AnotherProxied
   include Proxy::Proxify
 
-  accepts :hello
+  proxy :hello
 
   def hello
     "world"

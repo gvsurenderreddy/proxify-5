@@ -2,15 +2,15 @@ module Proxy
 
   class ProxyContainer
 
-    attr_reader :subject, :accepts
+    attr_reader :subject, :proxies
 
-    def initialize(subject, accepts)
+    def initialize(subject, proxies)
       @subject = subject
-      @accepts = accepts
+      @proxies = proxies
     end
 
     def method_missing(method, *args, &block)
-      if @accepts.include?(method)
+      if @proxies.include?(method)
         return subject.send(method, *args, &block)
       else
         raise NoMethodError, method.to_s
@@ -19,10 +19,10 @@ module Proxy
   end
 
   module ProxifyClass
-    attr_accessor :acceptable
+    attr_accessor :proxies
 
-    def accepts(*ting)
-      @acceptable = ting
+    def proxy(*args)
+      @proxies = args
     end
   end
 
@@ -41,7 +41,7 @@ module Proxy
         Object.const_set(class_name,ProxyContainer)
       end
 
-      klass.new(self, self.class.acceptable)
+      klass.new(self, self.class.proxies)
     end
 
     def class_exists?(class_name)
