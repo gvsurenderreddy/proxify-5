@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 class Proxied
-  extend Proxy::ProxifyClass
   include Proxy::Proxify
 
   accepts :hello
