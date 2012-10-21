@@ -11,7 +11,7 @@ module Proxy
 
     def method_missing(method, *args, &block)
       if @accepts.include?(method)
-        return subject.send(method)
+        return subject.send(method, *args, &block)
       else
         raise NoMethodError, method.to_s
       end
