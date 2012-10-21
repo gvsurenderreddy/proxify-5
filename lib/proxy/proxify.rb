@@ -35,8 +35,19 @@ module Proxy
 
     def proxy
       class_name = "#{self.class.name}Proxy"
-      klass = Object.const_set(class_name,ProxyContainer)
+      klass = if k = class_exists?(class_name)
+        k
+      else
+        Object.const_set(class_name,ProxyContainer)
+      end
+
       klass.new(self, self.class.acceptable)
+    end
+
+    def class_exists?(class_name)
+      Object.const_get(class_name)
+    rescue NameError
+      return false
     end
   end
 end
