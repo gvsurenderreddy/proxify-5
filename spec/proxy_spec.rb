@@ -37,7 +37,7 @@ describe Proxied do
 
   subject do
     proxied = Proxied.new
-    proxied.proxy
+    proxied.proxify
   end
 
   describe "Class Type" do
@@ -67,7 +67,7 @@ describe Proxied do
 
   describe "a second proxied class" do
     it "can handle more than one" do
-      another = AnotherProxied.new.proxy
+      another = AnotherProxied.new.proxify
       subject.hello.should == another.hello
     end
   end

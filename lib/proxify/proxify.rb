@@ -33,7 +33,7 @@ module Proxify
       base.send :extend, Proxify::ProxifyClass
     end
 
-    def proxy
+    def proxify
       class_name = "#{self.class.name}Proxy"
       klass = if k = class_exists?(class_name)
         k
