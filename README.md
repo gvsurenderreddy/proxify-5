@@ -22,28 +22,28 @@ Here `Foo` includes `Proxify::Me` and a list of messages that can be proxied thr
 
 `hello`, `say` and `tell` are allowed to be called and are argument less, with arguments and with block examples.  `goodbye` is not proxied and will raise an `UndefinedMethod` error.
 
-  class Foo
-    include Proxify::Me
+    class Foo
+      include Proxify::Me
 
-    proxy :hello, :say, :tell
+      proxy :hello, :say, :tell
 
-    def hello
-      "world"
+      def hello
+        "world"
+      end
+
+      def goodbye
+        "world"
+      end
+
+      def say(something)
+        something
+      end
+
+      def tell
+        yield
+      end
+
     end
-
-    def goodbye
-      "world"
-    end
-
-    def say(something)
-      something
-    end
-
-    def tell
-      yield
-    end
-
-  end
 
 To create the proxy, call the `proxify` method, this will return a `FooProxy` type.
 
