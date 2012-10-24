@@ -63,6 +63,11 @@ describe Foo do
       end
       called.should == true
     end
+
+    # it "can proxy a class method" do
+      # FooProxy.foo.should == "bar"
+    # end
+
   end
 
   describe "a second proxied class" do
