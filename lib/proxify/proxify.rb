@@ -28,6 +28,7 @@ module Proxify
 
   module Me
     extend Proxify::ProxifyClass
+    include Proxify::Base
 
     def self.included(base)
       base.send :extend, Proxify::ProxifyClass
@@ -35,19 +36,10 @@ module Proxify
 
     def proxify
       class_name = "#{self.class.name}Proxy"
-      klass = if k = class_exists?(class_name)
-        k
-      else
-        Object.const_set(class_name, Proxy)
-      end
-
+      klass = find_or_create_class(class_name, Proxy)
       klass.new(self, self.class.proxies)
     end
 
-    def class_exists?(class_name)
-      Object.const_get(class_name)
-    rescue NameError
-      return false
-    end
   end
+
 end
